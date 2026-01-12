@@ -24,6 +24,12 @@
   </head>
 
   <body>
+    <header>
+      <%= link_to "AwesomeEvents", root_path %>
+      <ul>
+        <li><%= link_to "Githubでログイン", "/auth/github", method: :post %></li>
+      </ul>
+    </header>
     <%= yield %>
   </body>
 </html>
