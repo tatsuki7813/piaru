@@ -29,9 +29,15 @@
       <div class="container">
         <%= link_to "AwesomeEvents", root_path, class: "navbar-brand" %>
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <%= button_to "Githubでログイン", "/auth/github", method: :post, data: { turbo: false }, class: "nav-link" %>
-          </li>
+          <% if logged_in? %>
+            <li class="nav-item">
+              <%= button_to "ログアウト", logout_path, method: :delete, data: { turbo: false }, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= button_to "Githubでログイン", "/auth/github", method: :post, data: { turbo: false }, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </header>
