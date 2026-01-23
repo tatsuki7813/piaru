@@ -19,22 +19,30 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "bootstrap.min", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <header>
-      <%= link_to "AwesomeEvents", root_path %>
-      <ul>
-        <li>
-          <%= button_to "Githubでログイン", "/auth/github", method: :post, data: { turbo: false } %>
-        </li>
-      </ul>
+    <header class="navbar navbar-expand-sm navbar-light bg-light">
+      <div class="container">
+        <%= link_to "AwesomeEvents", root_path, class: "navbar-brand" %>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= button_to "Githubでログイン", "/auth/github", method: :post, data: { turbo: false }, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
     </header>
-    <% if flash[:notice] %>
-      <%= flash[:notice] %>
-    <% end %>
-    <%= yield %>
+
+    <div class="container">
+      <% if flash.notice %>
+        <div class="alert alert-success">
+          <%= flash.notice %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
