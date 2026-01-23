@@ -8,6 +8,6 @@ class User < ApplicationRecord
     find_or_create_by!(provider:, uid:) do |user|
       user.name = nickname
       user.image_url = image_url
-    end 
+    end
   end
 end
