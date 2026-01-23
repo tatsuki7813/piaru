@@ -27,9 +27,14 @@
     <header>
       <%= link_to "AwesomeEvents", root_path %>
       <ul>
-        <li><%= link_to "Githubでログイン", "/auth/github", method: :post %></li>
+        <li>
+          <%= button_to "Githubでログイン", "/auth/github", method: :post, data: { turbo: false } %>
+        </li>
       </ul>
     </header>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
