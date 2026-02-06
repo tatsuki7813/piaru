@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  skip_before_action :authenticate, only: %i[show]
+
   def new
     @event = current_user.created_events.build
   end
